@@ -1,6 +1,10 @@
 import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { Card } from "./components/Card"
+import { Form } from "./components/Form"
+import { useState, useEffect } from "react"
+import {nanoid} from "nanoid"
 
 function App() {
 
@@ -13,13 +17,21 @@ function App() {
     { id: 6,  hexcode: "#FFFFFF" },
   ];
 
+  const [cards, setCards] = useState (colors)
+
   return (
     <div className="App">
-      {colors.map(color => {
-        return <Card key={color.key} colorname={color.colorname} hexcode={color.hexcode} />;
-      })
-      }
-     
+      <Form key={nanoid()}setCards={setCards} />
+      <div className="cardcontainer">
+        {colors.map((color) => {
+          return (
+            <Card
+              key={color.id}
+              hexcode={color.hexcode}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

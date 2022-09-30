@@ -1,7 +1,10 @@
 .App {
   text-align: center;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -28,6 +31,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.cardcontainer{
+  display: flex;
 }
 
 @keyframes App-logo-spin {

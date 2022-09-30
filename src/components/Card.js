@@ -1,7 +1,7 @@
 import "./Card.css"
 
 
-export function Card({ key, colorname, hexcode }) {
+export function Card({ hexcode }) {
     
     return (
       <div className="card" style={{ backgroundColor: hexcode }}>
