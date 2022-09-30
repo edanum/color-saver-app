@@ -3,7 +3,7 @@ width: 150px;
 height: 150px;
     background-color: lightgray; 
 display: flex;
-flex-direction: row;
+flex-direction: column;
 margin: auto;
 align-items: center;
 justify-content: center;
@@ -12,7 +12,13 @@ border: solid 3px black;
 margin: 20px;
 
 }
-
+.card__container{
+    margin: auto;
+    display: flex;
+    background-color: lightgrey;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 .card__hexcode{
     display: flex;
     justify-content: center;

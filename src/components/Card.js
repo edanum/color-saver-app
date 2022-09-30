@@ -1,7 +1,7 @@
 import "./Card.css"
 
 
-export function Card({ hexcode }) {
+export function Card({ hexcode, handleDeleteCard }) {
     
     return (
       <div className="card" style={{ backgroundColor: hexcode }}>
@@ -10,7 +10,8 @@ export function Card({ hexcode }) {
           onClick={() => navigator.clipboard.writeText(hexcode)}
         >
           {hexcode}
-        </p>
+            </p>
+            <button onClick={handleDeleteCard}>Delete</button>
       </div>
     );
 }
