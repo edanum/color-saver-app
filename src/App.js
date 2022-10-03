@@ -30,7 +30,7 @@ function App() {
   function editCard(id) {
     console.log("Edit Button works");
     setCards(
-      colors.map((item) => {
+      cards.map((item) => {
         return item.id === id
           ? { id: item.id, hexcode: item.hexcode, editModeOn: !item.editModeOn }
           : { id: item.id, hexcode: item.hexcode, editModeOn: item.editModeOn };
