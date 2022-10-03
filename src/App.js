@@ -7,19 +7,19 @@ import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 const colors = [
-  { id: 1, hexcode: "#000000" },
-  { id: 2, hexcode: "#FF0000" },
-  { id: 3, hexcode: "#00FFFF" },
-  { id: 4, hexcode: "#0F06FF" },
-  { id: 5, hexcode: "#FFF000" },
-  { id: 6, hexcode: "#FFFFFF" },
+  { id: 1, hexcode: "#000000", editModeOn: true },
+  { id: 2, hexcode: "#FF0000", editModeOn: true },
+  { id: 3, hexcode: "#00FFFF", editModeOn: true },
+  { id: 4, hexcode: "#0F06FF", editModeOn: false },
+  { id: 5, hexcode: "#FFF000", editModeOn: false },
+  { id: 6, hexcode: "#FFFFFF", editModeOn: false },
 ];
 
 function App() {
   const [cards, setCards] = useState(colors);
 
   function appendCard(color) {
-    setCards([{ id: nanoid(), hexcode: color }, ...cards]);
+    setCards([{ id: nanoid(), hexcode: color, editModeOn: false }, ...cards]);
     console.log(color);
   }
 
@@ -28,10 +28,17 @@ function App() {
   }
 
   function editCard(id) {
-    cards.map(card => {
-      return 
-    })
+    console.log("Edit Button works");
+    setCards(
+      colors.map((item) => {
+        return item.id === id
+          ? { id: item.id, hexcode: item.hexcode, editModeOn: !item.editModeOn }
+          : { id: item.id, hexcode: item.hexcode, editModeOn: item.editModeOn };
+      })
+    );
   }
+
+  // Hier einbauen: Wert im Array, der angibt ob Edit Mode on oder off ist
 
   return (
     <div className="App">
@@ -45,6 +52,8 @@ function App() {
               hexcode={color.hexcode}
               deleteCard={deleteCard}
               editCard={editCard}
+              editModeOn={color.editModeOn}
+              // Hier den Edit Wert mitgeben
             />
           );
         })}
