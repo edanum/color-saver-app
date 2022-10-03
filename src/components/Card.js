@@ -16,23 +16,27 @@ export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
 
   return (
     <div className="card" style={{ backgroundColor: hexcode }}>
-      <p
-        className="card__hexcode"
-        onClick={() => navigator.clipboard.writeText(hexcode)}
-      >
-        {hexcode}
-      </p>
-      <button className="card__delete" onClick={handleDeleteCard}>
-        X
-      </button>
       <form className="editform" onSubmit={handleEditCard}>
-        <button type="submit">Edit</button>
+        <button
+          type="submit"
+          className="card__hexcode"
+          onClick={() => {
+            navigator.clipboard.writeText(hexcode);
+          }}
+        >
+          {hexcode}
+        </button>
         {editModeOn === true ? (
-          <input type="color" id="newcolor" name="newcolor" />
+                  <input type="color" id="newcolor" name="newcolor" />
         ) : (
           ""
         )}
       </form>
+      <button className="card__delete" onClick={handleDeleteCard}>
+        X
+      </button>
+   
+  
     </div>
   );
 }
