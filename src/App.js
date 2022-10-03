@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import React from "react";
 import "./App.css";
 import { Card } from "./components/Card";
@@ -29,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Form key={nanoid()} appendCard={appendCard} />
-      <div className="card__container">
+      <div className="cardcontainer">
         {cards.map((color) => {
           return (
             <Card

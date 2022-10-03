@@ -1,5 +1,8 @@
 .App {
-
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 .App-logo {
@@ -29,7 +32,12 @@
 }
 
 .cardcontainer{
-  display: flex;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px;
+   
+   
 }
 
 
