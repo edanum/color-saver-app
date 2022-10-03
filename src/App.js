@@ -4,6 +4,7 @@ import { Card } from "./components/Card";
 import { Form } from "./components/Form";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import {colorsArray} from "./data/colors"
 
 const colors = [
   { id: 1, hexcode: "#000000" },
@@ -15,10 +16,12 @@ const colors = [
 ];
 
 function App() {
-  const [cards, setCards] = useState(colors);
+  const [cards, setCards] = useState(JSON.parse(localStorage.getItem("colors"))|| colorsArray );
+
+  useEffect(() => localStorage.setItem("colors", JSON.stringify(colors)),[colors])
 
   function appendCard(color) {
-    setCards([{ id: nanoid(), hexcode: color }, ...cards]);
+    setCards([{ id: nanoid(), hexcode: color.toUpperCase() }, ...cards]);
   }
 
   function deleteCard(id) {
