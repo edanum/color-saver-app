@@ -22,8 +22,10 @@ export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
       >
         {hexcode}
       </p>
-      <button onClick={handleDeleteCard}>Delete</button>
-      <form onSubmit={handleEditCard}>
+      <button className="card__delete" onClick={handleDeleteCard}>
+        X
+      </button>
+      <form className="editform" onSubmit={handleEditCard}>
         <button type="submit">Edit</button>
         {editModeOn === true ? (
           <input type="color" id="newcolor" name="newcolor" />

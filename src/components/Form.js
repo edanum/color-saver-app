@@ -12,7 +12,9 @@ export function Form({ appendCard }) {
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
+        <label HTMLfor="color">Pick a Color</label>
         <input type="color" id="color" name="color" />
+        <label HTMLfor="hexcode">Or insert a Hexcode</label>
         <input type="text" id="hexocde" name="hexcode" />
         <button type="submit">Add</button>
       </form>
