@@ -30,7 +30,7 @@ function App() {
   function editCard(id,newColor) {
     console.log("Edit Button works");
     setCards(
-      // editModeOn === true ? map das Element mit der ID mit der Input Color, rest gleich
+     
       cards.map((item) => {
         return item.id === id && item.editModeOn === true
           ? { id: item.id, hexcode: newColor, editModeOn: !item.editModeOn }
@@ -42,7 +42,7 @@ function App() {
     );
   }
 
-  // Hier einbauen: Wert im Array, der angibt ob Edit Mode on oder off ist
+
 
   return (
     <div className="App">
