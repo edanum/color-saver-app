@@ -20,7 +20,7 @@ function App() {
 
   function appendCard(color) {
     setCards([{ id: nanoid(), hexcode: color, editModeOn: false }, ...cards]);
-    console.log(color);
+  
   }
 
   function deleteCard(id) {
@@ -28,7 +28,6 @@ function App() {
   }
 
   function editCard(id,newColor) {
-    console.log("Edit Button works");
     setCards(
      
       cards.map((item) => {

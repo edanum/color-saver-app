@@ -1,9 +1,16 @@
+import { useState } from "react";
 import "./Card.css";
 
 export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
+  const [pickedColor, setPickedColor] = useState(hexcode);
+
   function handleDeleteCard() {
     deleteCard(id);
   }
+    
+    function onChange(event) {
+        setPickedColor(event.target.value)
+    }
 
   function handleEditCard(event) {
     event.preventDefault();
@@ -15,7 +22,7 @@ export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
   }
 
   return (
-    <div className="card" style={{ backgroundColor: hexcode }}>
+    <div className="card" style={{ backgroundColor: pickedColor }}>
       <form className="editform" onSubmit={handleEditCard}>
         <button
           type="submit"
@@ -27,7 +34,13 @@ export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
           {hexcode}
         </button>
         {editModeOn === true ? (
-                  <input type="color" id="newcolor" name="newcolor" />
+          <input
+            type="color"
+            id="newcolor"
+                      name="newcolor"
+                      onChange={onChange}
+            value={pickedColor}
+          />
         ) : (
           ""
         )}
@@ -35,8 +48,6 @@ export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
       <button className="card__delete" onClick={handleDeleteCard}>
         X
       </button>
-   
-  
     </div>
   );
 }
