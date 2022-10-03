@@ -3,11 +3,16 @@ import { useEffect, useState } from "react";
 
 export function Form({ appendCard }) {
   const [pickedColor, setPickedColor] = useState("#FFFFFF");
-  console.log(pickedColor);
+    console.log(pickedColor);
+    
   const onChangeColor = (event) => {
     console.log(event.target.value);
     setPickedColor(event.target.value);
   };
+    
+    // const onChangeHexcode = (event) => {
+    //     setPickedColor(event.targelt.value);
+    // };
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -25,9 +30,21 @@ export function Form({ appendCard }) {
         onSubmit={handleSubmit}
       >
         <label HTMLfor="color">Pick a Color</label>
-        <input type="color" id="color" name="color" onChange={onChangeColor} />
-        <label HTMLfor="hexcode">Or insert a Hexcode</label>
-        <input type="text" id="hexocde" name="hexcode" />
+        <input
+          type="color"
+          id="color"
+          name="color"
+          onChange={onChangeColor}
+          value={pickedColor}
+        />
+        <label HTMLfor="hexcode">Hexcode</label>
+        <input
+          type="text"
+          id="hexocde"
+          name="hexcode"
+          placeholder={pickedColor}
+          onChange={onChangeColor}
+        />
         <button type="submit">Add</button>
       </form>
     </div>
