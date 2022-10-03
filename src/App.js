@@ -23,11 +23,13 @@ function App() {
     console.log(color);
   }
 
-  function handleDeleteCard(id) {
-    cards.filter(item => item.id !== id)
-    console.log("handle Delete Card greift")
+  function deleteCard(id) {
+    setCards(cards.filter((item) => item.id !== id));
   }
 
+  function editCard(id) {
+    console.log("Edit triggered");
+  }
 
   return (
     <div className="App">
@@ -37,8 +39,10 @@ function App() {
           return (
             <Card
               key={color.id}
+              id={color.id}
               hexcode={color.hexcode}
-              handleDeleteCard={handleDeleteCard}
+              deleteCard={deleteCard}
+              editCard={editCard}
             />
           );
         })}
