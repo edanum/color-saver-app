@@ -1,22 +1,18 @@
 import "./Form.css";
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react";
 
 export function Form({ appendCard }) {
+  const [pickedColor, setPickedColor] = useState("#FFFFFF");
+  console.log(pickedColor);
+  const onChangeColor = (event) => {
+    console.log(event.target.value);
+    setPickedColor(event.target.value);
+  };
 
-    const [pickedColor, setPickedColor] = useState("#FFFFFF"); 
-    console.log(pickedColor);
-    const onChangeColor = (event) => {
-        console.log(event.target.value)
-        setPickedColor(event.target.value);
-        
-    }
-   
-
-    
   function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-      const values = Object.fromEntries(data);
+    const values = Object.fromEntries(data);
     console.log(values);
     appendCard(values.hexcode || values.color);
   }
@@ -26,7 +22,7 @@ export function Form({ appendCard }) {
       <form
         className="form"
         style={{ backgroundColor: pickedColor }}
-         onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <label HTMLfor="color">Pick a Color</label>
         <input type="color" id="color" name="color" onChange={onChangeColor} />

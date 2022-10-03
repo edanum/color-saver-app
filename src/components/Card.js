@@ -1,16 +1,16 @@
 import { useState } from "react";
 import "./Card.css";
 
-export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
+export function Card({ id, hexcode, deleteCard, editCard }) {
   const [pickedColor, setPickedColor] = useState(hexcode);
 
   function handleDeleteCard() {
     deleteCard(id);
   }
-    
-    function onChange(event) {
-        setPickedColor(event.target.value)
-    }
+
+  function onChange(event) {
+    setPickedColor(event.target.value);
+  }
 
   function handleEditCard(event) {
     event.preventDefault();
@@ -32,18 +32,15 @@ export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
           }}
         >
           {hexcode}
-        </button>
-        {editModeOn === true ? (
           <input
+            className="coloreditor"
             type="color"
             id="newcolor"
-                      name="newcolor"
-                      onChange={onChange}
+            name="newcolor"
+            onChange={onChange}
             value={pickedColor}
-          />
-        ) : (
-          ""
-        )}
+          ></input>
+        </button>
       </form>
       <button className="card__delete" onClick={handleDeleteCard}>
         X
