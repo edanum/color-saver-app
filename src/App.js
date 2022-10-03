@@ -7,9 +7,9 @@ import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 const colors = [
-  { id: 1, hexcode: "#000000", editModeOn: true },
-  { id: 2, hexcode: "#FF0000", editModeOn: true },
-  { id: 3, hexcode: "#00FFFF", editModeOn: true },
+  { id: 1, hexcode: "#000000", editModeOn: false },
+  { id: 2, hexcode: "#FF0000", editModeOn: false },
+  { id: 3, hexcode: "#00FFFF", editModeOn: false },
   { id: 4, hexcode: "#0F06FF", editModeOn: false },
   { id: 5, hexcode: "#FFF000", editModeOn: false },
   { id: 6, hexcode: "#FFFFFF", editModeOn: false },
@@ -27,14 +27,18 @@ function App() {
     setCards(cards.filter((item) => item.id !== id));
   }
 
-  function editCard(id) {
+  function editCard(id,newColor) {
     console.log("Edit Button works");
     setCards(
+      // editModeOn === true ? map das Element mit der ID mit der Input Color, rest gleich
       cards.map((item) => {
-        return item.id === id
+        return item.id === id && item.editModeOn === true
+          ? { id: item.id, hexcode: newColor, editModeOn: !item.editModeOn }
+          : item.id === id && item.editModeOn === false
           ? { id: item.id, hexcode: item.hexcode, editModeOn: !item.editModeOn }
           : { id: item.id, hexcode: item.hexcode, editModeOn: item.editModeOn };
       })
+      
     );
   }
 

@@ -5,8 +5,13 @@ export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
     deleteCard(id);
   }
 
-  function handleEditCard() {
-    editCard(id);
+  function handleEditCard(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const values = Object.fromEntries(data);
+    const newColor = values.newcolor;
+    console.log(values);
+    editCard(id, newColor);
   }
 
   return (
@@ -18,12 +23,14 @@ export function Card({ id, hexcode, deleteCard, editCard, editModeOn }) {
         {hexcode}
       </p>
       <button onClick={handleDeleteCard}>Delete</button>
-      <button onClick={handleEditCard}>Edit</button>
-      {editModeOn === true ? (
-        <input type="color" id="colorchange" name="colorchange" />
-      ) : (
-        ""
-      )}
+      <form onSubmit={handleEditCard}>
+        <button type="submit">Edit</button>
+        {editModeOn === true ? (
+          <input type="color" id="newcolor" name="newcolor" />
+        ) : (
+          ""
+        )}
+      </form>
     </div>
   );
 }
