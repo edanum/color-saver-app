@@ -28,7 +28,9 @@ function App() {
   }
 
   function editCard(id) {
-    console.log("Edit triggered");
+    cards.map(card => {
+      return 
+    })
   }
 
   return (
