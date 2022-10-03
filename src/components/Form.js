@@ -2,17 +2,25 @@ import "./Form.css";
 import { useEffect, useState } from "react";
 
 export function Form({ appendCard }) {
-  const [pickedColor, setPickedColor] = useState("#FFFFFF");
+    const [pickedColor, setPickedColor] = useState("#FFFFFF");
+    const [fontColor, setFontColor] = useState("#000000")
     console.log(pickedColor);
     
   const onChangeColor = (event) => {
     console.log(event.target.value);
-    setPickedColor(event.target.value);
+      setPickedColor(event.target.value);
+      setFontColor(getContrastColor(event.target.value));
   };
     
-    // const onChangeHexcode = (event) => {
-    //     setPickedColor(event.targelt.value);
-    // };
+    //Function to choose which font color is needed
+function getContrastColor(hexcolor) {
+  hexcolor = hexcolor.replace("#", "");
+  var r = parseInt(hexcolor.substr(0, 2), 16);
+  var g = parseInt(hexcolor.substr(2, 2), 16);
+  var b = parseInt(hexcolor.substr(4, 2), 16);
+  var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  return yiq >= 128 ? "black" : "white";
+}
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -22,14 +30,16 @@ export function Form({ appendCard }) {
     appendCard(values.hexcode || values.color);
   }
 
+    
+    
   return (
     <div>
       <form
         className="form"
-        style={{ backgroundColor: pickedColor }}
+        style={{ backgroundColor: pickedColor , color: fontColor}}
         onSubmit={handleSubmit}
       >
-        <label HTMLfor="color">Pick a Color</label>
+        <label HTMLfor="color">Pick a Color ..</label>
         <input
           type="color"
           id="color"
@@ -37,7 +47,7 @@ export function Form({ appendCard }) {
           onChange={onChangeColor}
           value={pickedColor}
         />
-        <label HTMLfor="hexcode">Hexcode</label>
+        <label HTMLfor="hexcode">or a Hexcode</label>
         <input
           type="text"
           id="hexocde"
