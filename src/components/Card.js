@@ -14,8 +14,8 @@ async function fetchColors(code) {
 }
 
 useEffect(() => {
-  fetchColors(hexcode);
-}, []);
+  fetchColors(pickedColor);
+}, [pickedColor]);
 
 //DIese Funktion ermittelt eine lesbare Farbe in Abnhängigkeit des Hinterfrundes
   function getContrastYIQ(hexcolor) {
@@ -47,15 +47,15 @@ useEffect(() => {
   return (
     <div className="card" style={{ backgroundColor: pickedColor }}>
       <form className="editform" onSubmit={handleEditCard}>
-        <div style={{ color: getContrastYIQ(pickedColor) }}>{colorName}</div>
+        <div className="card__colorname" style={{ color: getContrastYIQ(pickedColor) }}>{colorName}</div>
         <button
           type="submit"
           className="card__hexcode"
           onClick={() => {
-            navigator.clipboard.writeText(hexcode);
+            navigator.clipboard.writeText(pickedColor);
           }}
         >
-          {hexcode}
+          {pickedColor.toUpperCase()}
           <input
             className="coloreditor"
             type="color"

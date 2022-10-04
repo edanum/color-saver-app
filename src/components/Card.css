@@ -12,6 +12,12 @@
   margin: 20px;
 }
 
+.card__colorname{
+  font-size: 22px;
+  width: 80%;
+  text-align: center;
+}
+
 .card__delete {
   position: absolute;
   display: flex;
